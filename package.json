@@ -10,6 +10,8 @@
 		"url": "https://github.com/jesusruizlopez/sie-app.git"
 	},
 	"devDependencies": {
+		"express": "4.10.6",
+		"serve-favicon": "2.1.7",
 		"grunt": "*",
 		"grunt-recess": "*",
 		"grunt-contrib-clean": "*",
