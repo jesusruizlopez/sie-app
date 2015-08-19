@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= grunt.config.get('pkg.title') %></title>
+	<meta description="<%= grunt.config.get('pkg.title') %> - <%= grunt.config.get('pkg.description') %>">
+	<link rel="stylesheet" type="text/css" href="/vendor/styles.css">
+	<link rel="stylesheet" type="text/css" href="/<%= grunt.config.get('pkg.name') %>.css">
+</head>
+<body>
+	<div>
+		<header ng-include="'header.html'"></header>
+		<div ng-view></div>
+		<footer ng-include="'footer.html'"></footer>
+	</div>
+	<script type="text/javascript" src="/vendor/angular.js"></script>
+	<script type="text/javascript" src="/vendor/scripts.js"></script>
+	<script type="text/javascript" src="/<%= grunt.config.get('pkg.name') %>.js"></script>
+</body>
+</html>
