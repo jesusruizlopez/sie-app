@@ -1,0 +1,24 @@
+{
+	"name": "sie-app",
+	"description": "Sistema de cargas",
+	"version": "0.1.0",
+	"author": "Jesús Ruiz",
+	"license": "MIT",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jesusruizlopez/sie-app.git"
+	},
+	"devDependencies": {
+		"grunt": "*",
+		"grunt-recess": "*",
+		"grunt-contrib-clean": "*",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-jshint": "*",
+		"grunt-contrib-concat": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-html2js": "*",
+		"grunt-contrib-watch": "*",
+		"grunt-contrib-cssmin": "*"
+	}
+}
