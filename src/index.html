@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
 	<title><%= grunt.config.get('pkg.title') %></title>
 	<meta description="<%= grunt.config.get('pkg.title') %> - <%= grunt.config.get('pkg.description') %>">
 	<link rel="stylesheet" type="text/css" href="/vendor/styles.css">
 	<link rel="stylesheet" type="text/css" href="/<%= grunt.config.get('pkg.name') %>.css">
 </head>
-<body>
-	<div>
+<body ng-controller="AppCtrl">
+	<div class="container">
 		<header ng-include="'header.html'"></header>
 		<div ng-view></div>
 		<footer ng-include="'footer.html'"></footer>
