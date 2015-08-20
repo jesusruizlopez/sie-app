@@ -7,7 +7,7 @@ angular.module('courses', [])
 	})
 }])
 
-.controller('CoursesCtrl', ['$scope', function($scope) {
+.controller('CoursesCtrl', ['$scope', '$modal', function($scope, $modal) {
 	$scope.courses = [
 		{
 			id: "12DE34FR",
@@ -23,11 +23,67 @@ angular.module('courses', [])
 		}
 	];
 
-	$scope.edit = function(id) {
-		console.log(id);
+	$scope.add = function() {
+		var modalInstance = $modal.open({
+			templateUrl: 'courses/course.html',
+			controller: 'CoursesModalCtrl',
+			backdrop: 'static',
+			resolve: {
+				data: function() {
+					return {
+						icon: "fa-plus",
+						title: "Agregar curso"
+					}
+				},
+				course: function() {
+					return {
+						id: "",
+						name: "",
+						description: "",
+						responsible: ""
+					}
+				}
+			}
+		});
+	};
+
+	$scope.edit = function(course) {
+		var modalInstance = $modal.open({
+			templateUrl: 'courses/course.html',
+			controller: 'CoursesModalCtrl',
+			backdrop: 'static',
+			resolve: {
+				data: function() {
+					return {
+						icon: "fa-pencil",
+						title: "Editar curso"
+					}
+				},
+				course: function() {
+					return course;
+				}
+			}
+		});
 	};
 
 	$scope.remove = function(course) {
 		console.log(course);
+	};
+}])
+
+.controller('CoursesModalCtrl', ['$scope', '$modal', '$modalInstance', 'data', 'course', function($scope, $modal, $modalInstance, data, course) {
+	$scope.data = data;
+	$scope.course = course;
+
+	$scope.save = function() {
+		console.log($scope.course);
+	};
+
+	$scope.cancel = function() {
+		$modalInstance.dismiss();
+	};
+
+	$scope.close = function() {
+		$modalInstance.dismiss();
 	};
 }]);

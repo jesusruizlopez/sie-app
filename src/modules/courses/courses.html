@@ -2,8 +2,8 @@
 	<h1>Cursos</h1>
 	<div>
 		<div>
-			<input>
-			<button class="btn">
+			<input class="form-control" type="text" placeholder="Buscar curso..." ng-model="search">
+			<button class="btn" ng-click="add()">
 				<i class="fa fa-plus"></i> Agregar curso
 			</button>
 		</div>
@@ -19,9 +19,9 @@
 					<th>Docente</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="course in courses">
+					<tr ng-repeat="course in courses | filter:search">
 						<td>
-							<button class="btn" ng-click="edit(course.id)">
+							<button class="btn" ng-click="edit(course)">
 								<i class="fa fa-pencil"></i>
 							</button>
 							<button class="btn" ng-click="remove(course)">

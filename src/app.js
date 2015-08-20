@@ -3,6 +3,7 @@
 // instancia de la aplicación con sus respectivos módulos
 angular.module('app', [
 	'ngRoute',
+	'ui.bootstrap',
 	'courses',
 	'templates.general',
 	'templates.commons',
