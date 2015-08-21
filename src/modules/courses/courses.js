@@ -1,27 +1,22 @@
-angular.module('courses', [])
+angular.module('courses', ['services.resources'])
 
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'courses/courses.html',
-		controller: 'CoursesCtrl'
+		controller: 'CoursesCtrl',
+		resolve: {
+			courses: ['resources', function(resources) {
+				return resources.getCourses().
+				then(function(response) {
+					return response.data;
+				})
+			}]
+		}
 	})
 }])
 
-.controller('CoursesCtrl', ['$scope', '$modal', function($scope, $modal) {
-	$scope.courses = [
-		{
-			id: "12DE34FR",
-			name: "Programación Web",
-			description: "Curso avanzado de programación web",
-			responsible: "Martín Nevarez"
-		},
-		{
-			id: "12EE14ZR",
-			name: "Matemáticas",
-			description: "Curso avanzado de Matemáticas",
-			responsible: "Felix de la Rocha"
-		}
-	];
+.controller('CoursesCtrl', ['$scope', '$modal', 'courses', 'resources', '$route', function($scope, $modal, courses, resources, $route) {
+	$scope.courses = courses;
 
 	$scope.add = function() {
 		var modalInstance = $modal.open({
@@ -37,7 +32,6 @@ angular.module('courses', [])
 				},
 				course: function() {
 					return {
-						id: "",
 						name: "",
 						description: "",
 						responsible: ""
@@ -67,16 +61,38 @@ angular.module('courses', [])
 	};
 
 	$scope.remove = function(course) {
-		console.log(course);
+		var answer = confirm("¿Desea eliminar este curso?");
+		if (answer) {
+			resources.deleteCourse(course.id)
+			.success(function(response, code) {
+				if (code == 204) {
+					alert("Se eliminó correctamente el curso");
+					$route.reload();
+				}
+			})
+			.error(function(response, code) {
+				alert("Error al eliminar el curso");
+			})
+		}
 	};
 }])
 
-.controller('CoursesModalCtrl', ['$scope', '$modal', '$modalInstance', 'data', 'course', function($scope, $modal, $modalInstance, data, course) {
+.controller('CoursesModalCtrl', ['$scope', '$modal', '$modalInstance', 'data', 'course', 'resources', '$route', function($scope, $modal, $modalInstance, data, course, resources, $route) {
 	$scope.data = data;
 	$scope.course = course;
 
 	$scope.save = function() {
-		console.log($scope.course);
+		resources.createCourse($scope.course).
+		success(function(response, code) {
+			if (code == 200) {
+				$modalInstance.dismiss();
+				alert("Se guardó correctamente el curso");
+				$route.reload();
+			}
+		})
+		.error(function(response, code) {
+			alert("Error al guardar el curso");
+		});
 	};
 
 	$scope.cancel = function() {
