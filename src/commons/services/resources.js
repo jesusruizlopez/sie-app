@@ -9,6 +9,9 @@ angular.module('services.resources', [])
 		createCourse: function(course) {
 			return $http({method: 'POST', url: BASE + '/courses', data: course});
 		},
+		updateCourse: function(course) {
+			return $http({method: 'PUT', url: BASE + '/courses', data: course});
+		},
 		deleteCourse: function(id) {
 			return $http({method: 'DELETE', url: BASE + '/courses/' + id});
 		}

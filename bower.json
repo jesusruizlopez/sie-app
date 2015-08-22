@@ -1,23 +1,26 @@
 {
-	"name": "sie-app",
-	"version": "0.1.0",
-	"authors": [
-		"Jesús Ruiz"
-	],
-	"description": "Sistema de cargas",
-	"license": "MIT",
-	"private": true,
-	"ignore": [
-		"node_modules",
-		"bower_components"
-	],
-	"devDependencies": {
-		"angular": "1.3.4",
-		"angular-route": "1.3.4",
-		"jquery": "2.1.1",
-		"bootstrap": "3.3.1",
-		"font-awesome": "4.2.0",
-		"normalize.css": "3.0.2",
-		"angular-bootstrap": "0.12.0"
-	}
+  "name": "sie-app",
+  "version": "0.1.0",
+  "authors": [
+    "Jesús Ruiz"
+  ],
+  "description": "Sistema de cargas",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "angular": "1.3.8",
+    "angular-route": "1.3.8",
+    "angular-animate": "1.3.8",
+    "angular-sanitize": "1.3.8",
+    "angular-bootstrap": "0.12.0",
+    "ngtoast": "1.3.0",
+    "jquery": "2.1.1",
+    "bootstrap": "3.3.1",
+    "font-awesome": "4.2.0",
+    "normalize.css": "3.0.2"
+  }
 }

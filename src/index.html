@@ -7,9 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="/<%= grunt.config.get('pkg.name') %>.css">
 </head>
 <body ng-controller="AppCtrl">
-	<div class="container">
+	<div>
 		<header ng-include="'header.html'"></header>
-		<div ng-view></div>
+		<div class="container" ng-view></div>
+		<toast></toast>
 		<footer ng-include="'footer.html'"></footer>
 	</div>
 	<script type="text/javascript" src="/vendor/angular.js"></script>
